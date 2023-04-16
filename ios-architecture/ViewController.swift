@@ -21,6 +21,34 @@ class ViewController: UIViewController {
         
         tableView.register(UINib(nibName: "PokemonTableViewCell", bundle: nil), forCellReuseIdentifier: "PokeCell")
         tableView.rowHeight = 60
+        requestPokemonAPI()
+    }
+    
+    func requestPokemonAPI() {
+        let url = "https://pokeapi.co/api/v2/pokemon/?limit=1281"
+        let requestUrl = URL(string: url)!
+        
+        URLSession.shared.dataTask(with: requestUrl, completionHandler: {(data, response, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            guard let data = data, let response = response as? HTTPURLResponse else {
+                print("データもしくはレスポンスがnilの状態")
+                return
+            }
+            if response.statusCode == 200 {
+                let decoder = JSONDecoder()
+                do {
+                    let pokemonData = try decoder.decode(PokemonList.self, from: data)
+                    print(pokemonData.results[0].name)
+                } catch let error {
+                    print(error)
+                }
+            } else {
+                print("StatusCode: \(response.statusCode)")
+            }
+        }).resume()
     }
 }
 
