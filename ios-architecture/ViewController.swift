@@ -16,13 +16,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpTableView()
+        
+        getPokemonList()
+    }
+    
+    func setUpTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.register(UINib(nibName: "PokemonTableViewCell", bundle: nil), forCellReuseIdentifier: "PokeCell")
         tableView.rowHeight = 60
-        
-        getPokemonList()
     }
     
     func getPokemonList() {
@@ -39,8 +43,11 @@ class ViewController: UIViewController {
         }
     }
     
-    func pushPokemonDetailVC(data: Pokemon) {
+    func pushPokemonDetailVC(data: Pokemon, index: Int) {
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "PokemonDetailViewController") as! PokemonDetailViewController
+        nextVC.pokemon = data
+        nextVC.index = index
+        nextVC.delegate = self
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
@@ -54,7 +61,7 @@ class ViewController: UIViewController {
                 return
             }
             guard let data = data, let response = response as? HTTPURLResponse else {
-                print("データもしくはレスポンスがnilの状態")
+                completion(.failure(APIError.noResponse))
                 return
             }
             if response.statusCode == 200 {
@@ -79,6 +86,13 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: SegueDelegate {
+    func passFavoriteValue(favorite: Bool, index: Int) {
+        self.pokemons[index].isFavorite = favorite
+        self.tableView.reloadData()
+    }
+}
+
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pokemons.count
@@ -91,7 +105,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        pushPokemonDetailVC(data: pokemons[indexPath.row])
+        pushPokemonDetailVC(data: pokemons[indexPath.row], index: indexPath.row)
     }
     
 }

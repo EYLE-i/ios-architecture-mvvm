@@ -12,6 +12,7 @@ class PokemonTableViewCell: UITableViewCell {
     
     @IBOutlet weak var pokeLabel: UILabel!
     @IBOutlet weak var pokeImageView: UIImageView!
+    @IBOutlet weak var favoriteImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,5 +31,15 @@ class PokemonTableViewCell: UITableViewCell {
             with: data.imageUrl,
             placeholder: UIImage(named: "monsterBall")
         )
+        self.favoriteImageView.image = setFavImageView(data.isFavorite)
+        self.favoriteImageView.tintColor = .yellow
+    }
+    
+    func setFavImageView(_ isFavorite: Bool) -> UIImage? {
+        if isFavorite {
+            return UIImage(systemName: "star.fill")
+        } else {
+            return UIImage(systemName: "star")
+        }
     }
 }

@@ -33,11 +33,13 @@ struct Pokemon {
     let name: String
     let number: Int
     let imageUrl: URL?
+    var isFavorite: Bool
     
     init(_ resource: PokemonResult) {
         self.name = resource.name
         self.number = generatePokeNumber(resource.url)
         self.imageUrl = generatePokeImageUrl(self.number)
+        self.isFavorite = false
     }
 }
 
