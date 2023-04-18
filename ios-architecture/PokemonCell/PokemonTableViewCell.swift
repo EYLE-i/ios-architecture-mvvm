@@ -17,32 +17,18 @@ class PokemonTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
-    func setData(_ data: PokemonResult) {
-        let url = getPokemonURL(data.url)
-        
+    func set(_ data: Pokemon) {
         self.pokeLabel.text = data.name
         self.pokeImageView.kf.setImage(
-            with: url,
+            with: data.imageUrl,
             placeholder: UIImage(named: "monsterBall")
         )
-        
     }
-    
-    func getPokemonURL(_ url: String) -> URL?{
-        var pokeID = url.dropLast(1)
-        if let range = pokeID.range(of: "https://pokeapi.co/api/v2/pokemon/") {
-            pokeID.removeSubrange(range)
-        }
-        let pokeIDStr = String(pokeID)
-        let pokeUrl = URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(pokeIDStr).png")
-        return pokeUrl
-    }
-    
 }

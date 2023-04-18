@@ -11,8 +11,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let array = ["aaa", "iii", "uuu", "eee", "ooo"]
-    var arrayPokemon = [PokemonResult]()
+    var pokemons = [Pokemon]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +21,7 @@ class ViewController: UIViewController {
         
         tableView.register(UINib(nibName: "PokemonTableViewCell", bundle: nil), forCellReuseIdentifier: "PokeCell")
         tableView.rowHeight = 60
+        
         getPokemonList()
     }
     
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         requestPokemonAPI{ result in
             switch result {
             case .success(let data):
-                self.arrayPokemon = data
+                self.pokemons = PokemonListModel(data).pokemons
             case .failure(let error):
                 print(error)
             }
@@ -39,7 +39,12 @@ class ViewController: UIViewController {
         }
     }
     
-    func requestPokemonAPI(completion: @escaping (Result<[PokemonResult], APIError>) -> Void) {
+    func pushPokemonDetailVC(data: Pokemon) {
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "PokemonDetailViewController") as! PokemonDetailViewController
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    func requestPokemonAPI(completion: @escaping (Result<PokemonListResponse, APIError>) -> Void) {
         let url = "https://pokeapi.co/api/v2/pokemon/?limit=1281"
         let requestUrl = URL(string: url)!
         
@@ -55,8 +60,8 @@ class ViewController: UIViewController {
             if response.statusCode == 200 {
                 let decoder = JSONDecoder()
                 do {
-                    let pokemonData = try decoder.decode(PokemonList.self, from: data)
-                    completion(.success(pokemonData.results))
+                    let pokemonData = try decoder.decode(PokemonListResponse.self, from: data)
+                    completion(.success(pokemonData))
                 } catch let error {
                     completion(.failure(APIError.decode(error)))
                 }
@@ -76,14 +81,17 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayPokemon.count
+        return pokemons.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PokeCell", for: indexPath) as! PokemonTableViewCell
-        cell.setData(arrayPokemon[indexPath.row])
+        cell.set(pokemons[indexPath.row])
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        pushPokemonDetailVC(data: pokemons[indexPath.row])
+    }
     
 }

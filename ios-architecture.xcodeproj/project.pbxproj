@@ -17,6 +17,7 @@
 		458B4CE029D96B69003AB41B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458B4CDE29D96B69003AB41B /* Main.storyboard */; };
 		458B4CE229D96B6A003AB41B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 458B4CE129D96B6A003AB41B /* Assets.xcassets */; };
 		458B4CE529D96B6A003AB41B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458B4CE329D96B6A003AB41B /* LaunchScreen.storyboard */; };
+		45FEC61029EDA49D003D62C1 /* PokemonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FEC60F29EDA49D003D62C1 /* PokemonDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		458B4CE129D96B6A003AB41B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		458B4CE429D96B6A003AB41B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		458B4CE629D96B6A003AB41B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45FEC60F29EDA49D003D62C1 /* PokemonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				458B4CD829D96B69003AB41B /* AppDelegate.swift */,
 				458B4CDA29D96B69003AB41B /* SceneDelegate.swift */,
 				458B4CDC29D96B69003AB41B /* ViewController.swift */,
+				45FEC60F29EDA49D003D62C1 /* PokemonDetailViewController.swift */,
 				458B4CDE29D96B69003AB41B /* Main.storyboard */,
 				458B4CE129D96B6A003AB41B /* Assets.xcassets */,
 				458B4CE329D96B6A003AB41B /* LaunchScreen.storyboard */,
@@ -169,6 +172,7 @@
 				4585BFE229EC4F78009605BD /* PokemonTableViewCell.swift in Sources */,
 				458B4CD929D96B69003AB41B /* AppDelegate.swift in Sources */,
 				458B4CDB29D96B69003AB41B /* SceneDelegate.swift in Sources */,
+				45FEC61029EDA49D003D62C1 /* PokemonDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
