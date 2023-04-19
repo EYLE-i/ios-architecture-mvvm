@@ -10,8 +10,12 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var favoriteSwitch: UISwitch!
     
     var pokemons = [Pokemon]()
+    var pokemonsList = [Pokemon]()
+    
+    var isFavoriteSwitchOn = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +24,23 @@ class ViewController: UIViewController {
         
         getPokemonList()
     }
+    
+    @IBAction func switchChanged(_ sender: UISwitch) {
+        setFavoriteList(sender.isOn)
+        isFavoriteSwitchOn = sender.isOn
+    }
+    
+    func setFavoriteList(_ isOn: Bool) {
+        if isOn {
+            self.pokemons = self.pokemonsList.filter {
+                $0.isFavorite == true
+            }
+        } else {
+            self.pokemons = self.pokemonsList
+        }
+        self.tableView.reloadData()
+    }
+    
     
     func setUpTableView() {
         tableView.delegate = self
@@ -34,6 +55,7 @@ class ViewController: UIViewController {
             switch result {
             case .success(let data):
                 self.pokemons = PokemonListModel(data).pokemons
+                self.pokemonsList = PokemonListModel(data).pokemons
             case .failure(let error):
                 print(error)
             }
@@ -87,9 +109,13 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: SegueDelegate {
-    func passFavoriteValue(favorite: Bool, index: Int) {
-        self.pokemons[index].isFavorite = favorite
-        self.tableView.reloadData()
+    func passFavoriteValue(pokemon: Pokemon) {
+        let matchIndex = self.pokemonsList.firstIndex(where: {
+            $0.number == pokemon.number
+        })
+        self.pokemonsList[matchIndex!].isFavorite = pokemon.isFavorite
+        self.pokemons = self.pokemonsList
+        setFavoriteList(isFavoriteSwitchOn)
     }
 }
 

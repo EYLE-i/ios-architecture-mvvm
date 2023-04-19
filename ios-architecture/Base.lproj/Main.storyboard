@@ -30,8 +30,19 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6c2-KB-xrc" secondAttribute="bottom" id="igg-aZ-kWv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="PokemonList" id="BMT-3o-U1A"/>
+                    <navigationItem key="navigationItem" title="PokemonList" id="BMT-3o-U1A">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="eGg-Uk-1k7">
+                            <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="g51-rO-JA3">
+                                <rect key="frame" x="326" y="6.6666666666666679" width="51" height="31.000000000000004"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="switchChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="dML-Ad-w5g"/>
+                                </connections>
+                            </switch>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="favoriteSwitch" destination="g51-rO-JA3" id="Sap-lq-9uw"/>
                         <outlet property="tableView" destination="6c2-KB-xrc" id="8t3-mT-Muv"/>
                     </connections>
                 </viewController>

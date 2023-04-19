@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SegueDelegate: AnyObject {
-    func passFavoriteValue(favorite: Bool, index: Int)
+    func passFavoriteValue(pokemon: Pokemon)
 }
 
 class PokemonDetailViewController: UIViewController {
@@ -33,12 +33,12 @@ class PokemonDetailViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = favoriteButton
         
-        isFavorite = pokemon.isFavorite
+//        isFavorite = pokemon.isFavorite
         updateFavoriteButton()
     }
     
     func updateFavoriteButton() {
-        if isFavorite {
+        if pokemon.isFavorite {
             favoriteButton.image = UIImage(systemName: "star.fill")
         } else {
             favoriteButton.image = UIImage(systemName: "star")
@@ -47,8 +47,8 @@ class PokemonDetailViewController: UIViewController {
     
     @objc
     private func favoriteButtonTap(_ button: UIBarButtonItem) {
-        self.isFavorite = !isFavorite
-        print(isFavorite)
+//        self.isFavorite = !isFavorite
+        pokemon.isFavorite = !pokemon.isFavorite
         updateFavoriteButton()
     }
 
@@ -57,7 +57,7 @@ class PokemonDetailViewController: UIViewController {
 extension PokemonDetailViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         if viewController is ViewController {
-            delegate?.passFavoriteValue(favorite: isFavorite, index: index)
+            delegate?.passFavoriteValue(pokemon: pokemon)
         }
     }
 }
