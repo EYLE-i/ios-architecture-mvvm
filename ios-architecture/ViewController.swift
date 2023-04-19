@@ -100,12 +100,6 @@ class ViewController: UIViewController {
         }).resume()
     }
     
-    enum APIError: Error {
-        case server(Int)
-        case decode(Error)
-        case noResponse
-        case unknown(Error)
-    }
 }
 
 extension ViewController: SegueDelegate {
