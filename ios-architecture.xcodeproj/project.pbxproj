@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		451594CD29F04F810044B5B7 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451594CC29F04F810044B5B7 /* APIClient.swift */; };
+		451594CF29F177B50044B5B7 /* PokeListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451594CE29F177B50044B5B7 /* PokeListAPI.swift */; };
 		4585BFE229EC4F78009605BD /* PokemonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4585BFE029EC4F78009605BD /* PokemonTableViewCell.swift */; };
 		4585BFE329EC4F78009605BD /* PokemonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4585BFE129EC4F78009605BD /* PokemonTableViewCell.xib */; };
 		4585BFE529EC5B6F009605BD /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4585BFE429EC5B6F009605BD /* Pokemon.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		451594CC29F04F810044B5B7 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		451594CE29F177B50044B5B7 /* PokeListAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeListAPI.swift; sourceTree = "<group>"; };
 		4585BFE029EC4F78009605BD /* PokemonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTableViewCell.swift; sourceTree = "<group>"; };
 		4585BFE129EC4F78009605BD /* PokemonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonTableViewCell.xib; sourceTree = "<group>"; };
 		4585BFE429EC5B6F009605BD /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				451594CC29F04F810044B5B7 /* APIClient.swift */,
+				451594CE29F177B50044B5B7 /* PokeListAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4585BFE529EC5B6F009605BD /* Pokemon.swift in Sources */,
+				451594CF29F177B50044B5B7 /* PokeListAPI.swift in Sources */,
 				451594CD29F04F810044B5B7 /* APIClient.swift in Sources */,
 				458B4CDD29D96B69003AB41B /* ViewController.swift in Sources */,
 				4585BFE229EC4F78009605BD /* PokemonTableViewCell.swift in Sources */,

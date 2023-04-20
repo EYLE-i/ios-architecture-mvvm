@@ -14,18 +14,26 @@ public enum APIError: Error {
     case unknown(Error)
 }
 
-protocol Requestable {
+public protocol Requestable {
     associatedtype Model
     var url: String { get }
     var httpMethod: String { get }
     var headers: [String: String] { get }
     var body: Data? { get }
+    var queries: [String: String] { get }
+    var timeout: TimeInterval { get }
     func decode(from data: Data) throws -> Model
 }
 
-extension Requestable {
+public extension Requestable {
     var urlRequest: URLRequest? {
-        guard let url = URL(string: url) else { return nil }
+        guard var urlComponents = URLComponents(string: url) else { return nil }
+        var urlQueryItems: [URLQueryItem] = []
+        queries.forEach { key, value in
+            urlQueryItems.append(URLQueryItem(name: key, value: value))
+        }
+        urlComponents.queryItems = urlQueryItems
+        guard let url = urlComponents.url else { return nil }
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod
         if let body = body {
@@ -36,18 +44,27 @@ extension Requestable {
         }
         return request
     }
-}
-
-protocol APIClient {
-    func request<T: Requestable>(_ requestable: T, completion: @escaping(Result<T.Model?, APIError>) -> Void)
-}
-
-class DefaultAPIClient: APIClient {
-    func request<T: Requestable>(_ requestable: T, completion: @escaping(Result<T.Model?, APIError>) -> Void) {
-        guard let request = requestable.urlRequest else { return }
+    
+    var session: URLSession {
         let config: URLSessionConfiguration = URLSessionConfiguration.default
-        config.timeoutIntervalForResource = 60
-        let session: URLSession = URLSession(configuration: config)
+        config.timeoutIntervalForResource = timeout
+        let session = URLSession(configuration: config)
+        return session
+    }
+}
+
+public protocol APIClient {
+    func request<T: Requestable>(_ requestable: T, completion: @escaping(Result<T.Model, APIError>) -> Void)
+}
+
+public final class DefaultAPIClient: APIClient {
+    public static let shared = DefaultAPIClient()
+    
+    private init() {}
+    
+    public func request<T: Requestable>(_ requestable: T, completion: @escaping(Result<T.Model, APIError>) -> Void) {
+        guard let request = requestable.urlRequest else { return }
+        let session = requestable.session
         let task = session.dataTask(with: request, completionHandler: {(data, response, error) in
             if let error = error {
                 completion(.failure(APIError.unknown(error)))
@@ -70,31 +87,4 @@ class DefaultAPIClient: APIClient {
         })
         task.resume()
     }
-}
-
-struct PokeListAPIRequest: Requestable {
-    typealias Model = PokemonListResponse
-    
-    var url: String {
-        return "https://pokeapi.co/api/v2/pokemon/?limit=1281"
-    }
-    
-    var httpMethod: String {
-        return "GET"
-    }
-    
-    var headers: [String : String] {
-        return [:]
-    }
-    
-    var body: Data? {
-        return nil
-    }
-    
-    func decode(from data: Data) throws -> PokemonListResponse {
-        let decoder = JSONDecoder()
-//        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        return try decoder.decode(PokemonListResponse.self, from: data)
-    }
-    
 }
