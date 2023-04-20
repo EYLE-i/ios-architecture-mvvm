@@ -8,14 +8,14 @@
 import Foundation
 
 
-public class PokeListAPI {
+class PokeListAPI {
     private let apiClient: APIClient
     
-    public init(apiClient: APIClient) {
+    init(apiClient: APIClient) {
         self.apiClient = apiClient
     }
     
-    let request = PokeListAPIRequest()
+    private let request = PokeListAPIRequest()
     
     func requestPokeList(completion: @escaping (Result<PokemonListResponse, APIError>) -> Void) {
         apiClient.request(request) { result in

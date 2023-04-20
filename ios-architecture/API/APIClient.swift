@@ -7,14 +7,14 @@
 
 import Foundation
 
-public enum APIError: Error {
+enum APIError: Error {
     case server(Int)
     case decode(Error)
     case noResponse
     case unknown(Error)
 }
 
-public protocol Requestable {
+protocol Requestable {
     associatedtype Model
     var url: String { get }
     var httpMethod: String { get }
@@ -25,7 +25,7 @@ public protocol Requestable {
     func decode(from data: Data) throws -> Model
 }
 
-public extension Requestable {
+extension Requestable {
     var urlRequest: URLRequest? {
         guard var urlComponents = URLComponents(string: url) else { return nil }
         var urlQueryItems: [URLQueryItem] = []
@@ -53,16 +53,16 @@ public extension Requestable {
     }
 }
 
-public protocol APIClient {
+protocol APIClient {
     func request<T: Requestable>(_ requestable: T, completion: @escaping(Result<T.Model, APIError>) -> Void)
 }
 
-public final class DefaultAPIClient: APIClient {
-    public static let shared = DefaultAPIClient()
+final class DefaultAPIClient: APIClient {
+    static let shared = DefaultAPIClient()
     
     private init() {}
     
-    public func request<T: Requestable>(_ requestable: T, completion: @escaping(Result<T.Model, APIError>) -> Void) {
+    func request<T: Requestable>(_ requestable: T, completion: @escaping(Result<T.Model, APIError>) -> Void) {
         guard let request = requestable.urlRequest else { return }
         let session = requestable.session
         let task = session.dataTask(with: request, completionHandler: {(data, response, error) in
