@@ -48,7 +48,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="936.64122137404581" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="775" y="-2"/>
         </scene>
         <!--Pokemon Detail View Controller-->
         <scene sceneID="sqz-PY-pDF">

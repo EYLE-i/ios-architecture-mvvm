@@ -8,6 +8,34 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var model: PokemonListModel! {
+        didSet {
+            registerModel()
+        }
+    }
+    
+    deinit {
+        model.notificationCenter.removeObserver(self)
+    }
+    
+    private func registerModel() {
+        _ = model.notificationCenter
+            .addObserver(
+                forName: .init("pokemon"),
+                object: nil,
+                queue: nil
+            ) { [weak self] notification in
+                if let pokemon = notification.userInfo?["pokemon"] as? PokemonList {
+                    self?.updateViews(pokemon: pokemon)
+                }
+            }
+    }
+    
+    private func updateViews(pokemon: PokemonList) {
+        
+    }
+    
+    
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var favoriteSwitch: UISwitch!
@@ -54,8 +82,8 @@ class ViewController: UIViewController {
         requestPokemonAPI{ result in
             switch result {
             case .success(let data):
-                self.pokemons = PokemonListModel(data).pokemons
-                self.pokemonsList = PokemonListModel(data).pokemons
+                self.pokemons = PokemonList(data).pokemons
+                self.pokemonsList = PokemonList(data).pokemons
             case .failure(let error):
                 print(error)
             }

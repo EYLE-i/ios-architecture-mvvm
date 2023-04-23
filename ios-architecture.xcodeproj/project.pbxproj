@@ -10,6 +10,9 @@
 		451594CD29F04F810044B5B7 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451594CC29F04F810044B5B7 /* APIClient.swift */; };
 		451594CF29F177B50044B5B7 /* PokeListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451594CE29F177B50044B5B7 /* PokeListAPI.swift */; };
 		451594D229F195910044B5B7 /* PokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451594D129F195910044B5B7 /* PokemonModel.swift */; };
+		451594D929F29E990044B5B7 /* XibLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451594D829F29E990044B5B7 /* XibLoadView.swift */; };
+		451594DD29F546EF0044B5B7 /* PokemoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451594DC29F546EF0044B5B7 /* PokemoListView.swift */; };
+		451594DF29F547D60044B5B7 /* PokemonListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 451594DE29F547D60044B5B7 /* PokemonListView.xib */; };
 		4585BFE229EC4F78009605BD /* PokemonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4585BFE029EC4F78009605BD /* PokemonTableViewCell.swift */; };
 		4585BFE329EC4F78009605BD /* PokemonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4585BFE129EC4F78009605BD /* PokemonTableViewCell.xib */; };
 		4585BFE529EC5B6F009605BD /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4585BFE429EC5B6F009605BD /* Pokemon.swift */; };
@@ -27,6 +30,9 @@
 		451594CC29F04F810044B5B7 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		451594CE29F177B50044B5B7 /* PokeListAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeListAPI.swift; sourceTree = "<group>"; };
 		451594D129F195910044B5B7 /* PokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonModel.swift; sourceTree = "<group>"; };
+		451594D829F29E990044B5B7 /* XibLoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibLoadView.swift; sourceTree = "<group>"; };
+		451594DC29F546EF0044B5B7 /* PokemoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemoListView.swift; sourceTree = "<group>"; };
+		451594DE29F547D60044B5B7 /* PokemonListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonListView.xib; sourceTree = "<group>"; };
 		4585BFE029EC4F78009605BD /* PokemonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTableViewCell.swift; sourceTree = "<group>"; };
 		4585BFE129EC4F78009605BD /* PokemonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonTableViewCell.xib; sourceTree = "<group>"; };
 		4585BFE429EC5B6F009605BD /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
@@ -78,6 +84,48 @@
 			path = Pokemon;
 			sourceTree = "<group>";
 		};
+		451594D329F1AF1C0044B5B7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				451594D429F1AF2E0044B5B7 /* PokemonList */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		451594D429F1AF2E0044B5B7 /* PokemonList */ = {
+			isa = PBXGroup;
+			children = (
+				458B4CDC29D96B69003AB41B /* ViewController.swift */,
+			);
+			path = PokemonList;
+			sourceTree = "<group>";
+		};
+		451594D529F1B25A0044B5B7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				451594D729F29E840044B5B7 /* Common */,
+				451594D629F1B2670044B5B7 /* PokemonList */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		451594D629F1B2670044B5B7 /* PokemonList */ = {
+			isa = PBXGroup;
+			children = (
+				451594DC29F546EF0044B5B7 /* PokemoListView.swift */,
+				451594DE29F547D60044B5B7 /* PokemonListView.xib */,
+			);
+			path = PokemonList;
+			sourceTree = "<group>";
+		};
+		451594D729F29E840044B5B7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				451594D829F29E990044B5B7 /* XibLoadView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		4585BFDF29EC4F41009605BD /* PokemonCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,13 +154,14 @@
 		458B4CD729D96B69003AB41B /* ios-architecture */ = {
 			isa = PBXGroup;
 			children = (
+				451594D529F1B25A0044B5B7 /* Views */,
+				451594D329F1AF1C0044B5B7 /* Controllers */,
 				4585BFE429EC5B6F009605BD /* Pokemon.swift */,
 				451594CB29F04F660044B5B7 /* API */,
 				451594CA29F0340B0044B5B7 /* Models */,
 				4585BFDF29EC4F41009605BD /* PokemonCell */,
 				458B4CD829D96B69003AB41B /* AppDelegate.swift */,
 				458B4CDA29D96B69003AB41B /* SceneDelegate.swift */,
-				458B4CDC29D96B69003AB41B /* ViewController.swift */,
 				45FEC60F29EDA49D003D62C1 /* PokemonDetailViewController.swift */,
 				458B4CDE29D96B69003AB41B /* Main.storyboard */,
 				458B4CE129D96B6A003AB41B /* Assets.xcassets */,
@@ -189,6 +238,7 @@
 				458B4CE529D96B6A003AB41B /* LaunchScreen.storyboard in Resources */,
 				4585BFE329EC4F78009605BD /* PokemonTableViewCell.xib in Resources */,
 				458B4CE229D96B6A003AB41B /* Assets.xcassets in Resources */,
+				451594DF29F547D60044B5B7 /* PokemonListView.xib in Resources */,
 				458B4CE029D96B69003AB41B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,6 +252,7 @@
 			files = (
 				4585BFE529EC5B6F009605BD /* Pokemon.swift in Sources */,
 				451594CF29F177B50044B5B7 /* PokeListAPI.swift in Sources */,
+				451594D929F29E990044B5B7 /* XibLoadView.swift in Sources */,
 				451594CD29F04F810044B5B7 /* APIClient.swift in Sources */,
 				458B4CDD29D96B69003AB41B /* ViewController.swift in Sources */,
 				4585BFE229EC4F78009605BD /* PokemonTableViewCell.swift in Sources */,
@@ -209,6 +260,7 @@
 				458B4CDB29D96B69003AB41B /* SceneDelegate.swift in Sources */,
 				451594D229F195910044B5B7 /* PokemonModel.swift in Sources */,
 				45FEC61029EDA49D003D62C1 /* PokemonDetailViewController.swift in Sources */,
+				451594DD29F546EF0044B5B7 /* PokemoListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

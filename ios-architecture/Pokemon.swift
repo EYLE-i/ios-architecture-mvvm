@@ -19,7 +19,7 @@ struct PokemonResult: Decodable {
     var url: String
 }
 
-struct PokemonListModel {
+struct PokemonList {
     let count: Int
     let pokemons: [Pokemon]
     
