@@ -8,7 +8,7 @@
 import UIKit
 
 class PokemoListView: UIView {
-    public let cellIdentifier = "cell"
+    public let cellIdentifier = "PokemonListTableViewCell"
     @IBOutlet weak var favoriteFilterButton: UIButton!
     @IBOutlet weak var typeFilterButton: UIButton!
     @IBOutlet weak var tableView: UITableView! {
