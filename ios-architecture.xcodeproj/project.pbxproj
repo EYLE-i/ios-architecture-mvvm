@@ -63,6 +63,8 @@
 			isa = PBXGroup;
 			children = (
 				451594D029F195640044B5B7 /* Pokemon */,
+				451594CB29F04F660044B5B7 /* API */,
+				4599A21B29F7EBB000668A44 /* JSONExport */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -156,10 +158,7 @@
 			children = (
 				451594D529F1B25A0044B5B7 /* Views */,
 				451594D329F1AF1C0044B5B7 /* Controllers */,
-				4585BFE429EC5B6F009605BD /* Pokemon.swift */,
-				451594CB29F04F660044B5B7 /* API */,
 				451594CA29F0340B0044B5B7 /* Models */,
-				4585BFDF29EC4F41009605BD /* PokemonCell */,
 				458B4CD829D96B69003AB41B /* AppDelegate.swift */,
 				458B4CDA29D96B69003AB41B /* SceneDelegate.swift */,
 				45FEC60F29EDA49D003D62C1 /* PokemonDetailViewController.swift */,
@@ -167,8 +166,25 @@
 				458B4CE129D96B6A003AB41B /* Assets.xcassets */,
 				458B4CE329D96B6A003AB41B /* LaunchScreen.storyboard */,
 				458B4CE629D96B6A003AB41B /* Info.plist */,
+				4585BFDF29EC4F41009605BD /* PokemonCell */,
 			);
 			path = "ios-architecture";
+			sourceTree = "<group>";
+		};
+		4599A21B29F7EBB000668A44 /* JSONExport */ = {
+			isa = PBXGroup;
+			children = (
+				4599A21C29F7EBD000668A44 /* Pokemon */,
+			);
+			path = JSONExport;
+			sourceTree = "<group>";
+		};
+		4599A21C29F7EBD000668A44 /* Pokemon */ = {
+			isa = PBXGroup;
+			children = (
+				4585BFE429EC5B6F009605BD /* Pokemon.swift */,
+			);
+			path = Pokemon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
