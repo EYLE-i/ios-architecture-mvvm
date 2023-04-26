@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var model: PokemonListModel! {
+    var model: PokemonModel! {
         didSet {
             registerModel()
         }

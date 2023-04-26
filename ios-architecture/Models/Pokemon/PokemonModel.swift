@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class PokemonListModel {
+final class PokemonModel {
     let notificationCenter = NotificationCenter.default
     private(set) var pokemon: PokemonList! {
         didSet {
