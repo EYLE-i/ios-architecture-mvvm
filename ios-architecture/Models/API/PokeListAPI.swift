@@ -17,7 +17,7 @@ class PokeListAPI {
     
     private let request = PokeListAPIRequest()
     
-    func requestPokeList(completion: @escaping (Result<PokemonListResponse, APIError>) -> Void) {
+    func requestPokeList(completion: @escaping (Result<DummyPokemonListResponse, APIError>) -> Void) {
         apiClient.request(request) { result in
             switch result {
             case .success(let data):
@@ -30,7 +30,7 @@ class PokeListAPI {
 }
 
 struct PokeListAPIRequest: Requestable {
-    typealias Model = PokemonListResponse
+    typealias Model = DummyPokemonListResponse
     
     var url: String {
         return "https://pokeapi.co/api/v2/pokemon/"
@@ -56,9 +56,9 @@ struct PokeListAPIRequest: Requestable {
         return 60
     }
     
-    func decode(from data: Data) throws -> PokemonListResponse {
+    func decode(from data: Data) throws -> DummyPokemonListResponse {
         let decoder = JSONDecoder()
-        return try decoder.decode(PokemonListResponse.self, from: data)
+        return try decoder.decode(DummyPokemonListResponse.self, from: data)
     }
     
 }

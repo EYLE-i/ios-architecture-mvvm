@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SegueDelegate: AnyObject {
-    func passFavoriteValue(pokemon: Pokemon)
+    func passFavoriteValue(pokemon: DummyPokemon)
 }
 
 class PokemonDetailViewController: UIViewController {
@@ -17,7 +17,7 @@ class PokemonDetailViewController: UIViewController {
     
     weak var delegate: SegueDelegate?
     
-    var pokemon: Pokemon!
+    var pokemon: DummyPokemon!
     var index: Int!
 
     private lazy var favoriteButton = UIBarButtonItem(

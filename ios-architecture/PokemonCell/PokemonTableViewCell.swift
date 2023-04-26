@@ -25,7 +25,7 @@ class PokemonTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func set(_ data: Pokemon) {
+    func set(_ data: DummyPokemon) {
         self.pokeLabel.text = data.name
         self.pokeImageView.kf.setImage(
             with: data.imageUrl,

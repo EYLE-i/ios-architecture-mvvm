@@ -9,7 +9,7 @@ import Foundation
 
 final class PokemonModel {
     let notificationCenter = NotificationCenter.default
-    private(set) var pokemon: PokemonList! {
+    private(set) var pokemon: DummyPokemonList! {
         didSet {
             notificationCenter.post(
                 name: .init("pokemon"),
@@ -24,10 +24,10 @@ final class PokemonModel {
         self.pokeListAPI = .init(apiClient: apiClient)
     }
     
-    func requestPokeList(_ completion: @escaping (Result<PokemonListResponse, APIError>) -> Void) {
+    func requestPokeList(_ completion: @escaping (Result<DummyPokemonListResponse, APIError>) -> Void) {
         pokeListAPI.requestPokeList { [weak self] result in
             if case .success(let pokemonListResponse) = result {
-                self?.pokemon = PokemonList(pokemonListResponse)
+                self?.pokemon = DummyPokemonList(pokemonListResponse)
             }
             completion(result)
         }

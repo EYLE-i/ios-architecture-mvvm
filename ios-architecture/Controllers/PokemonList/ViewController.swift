@@ -25,13 +25,13 @@ class ViewController: UIViewController {
                 object: nil,
                 queue: nil
             ) { [weak self] notification in
-                if let pokemon = notification.userInfo?["pokemon"] as? PokemonList {
+                if let pokemon = notification.userInfo?["pokemon"] as? DummyPokemonList {
                     self?.updateViews(pokemon: pokemon)
                 }
             }
     }
     
-    private func updateViews(pokemon: PokemonList) {
+    private func updateViews(pokemon: DummyPokemonList) {
         
     }
     
@@ -40,8 +40,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var favoriteSwitch: UISwitch!
     
-    var pokemons = [Pokemon]()
-    var pokemonsList = [Pokemon]()
+    var pokemons = [DummyPokemon]()
+    var pokemonsList = [DummyPokemon]()
     
     var isFavoriteSwitchOn = false
     
@@ -82,8 +82,8 @@ class ViewController: UIViewController {
         requestPokemonAPI{ result in
             switch result {
             case .success(let data):
-                self.pokemons = PokemonList(data).pokemons
-                self.pokemonsList = PokemonList(data).pokemons
+                self.pokemons = DummyPokemonList(data).pokemons
+                self.pokemonsList = DummyPokemonList(data).pokemons
             case .failure(let error):
                 print(error)
             }
@@ -93,7 +93,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func pushPokemonDetailVC(data: Pokemon, index: Int) {
+    func pushPokemonDetailVC(data: DummyPokemon, index: Int) {
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "PokemonDetailViewController") as! PokemonDetailViewController
         nextVC.pokemon = data
         nextVC.index = index
@@ -101,7 +101,7 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
-    func requestPokemonAPI(completion: @escaping (Result<PokemonListResponse, APIError>) -> Void) {
+    func requestPokemonAPI(completion: @escaping (Result<DummyPokemonListResponse, APIError>) -> Void) {
         let url = "https://pokeapi.co/api/v2/pokemon/?limit=1281"
         let requestUrl = URL(string: url)!
         
@@ -117,7 +117,7 @@ class ViewController: UIViewController {
             if response.statusCode == 200 {
                 let decoder = JSONDecoder()
                 do {
-                    let pokemonData = try decoder.decode(PokemonListResponse.self, from: data)
+                    let pokemonData = try decoder.decode(DummyPokemonListResponse.self, from: data)
                     completion(.success(pokemonData))
                 } catch let error {
                     completion(.failure(APIError.decode(error)))
@@ -131,7 +131,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: SegueDelegate {
-    func passFavoriteValue(pokemon: Pokemon) {
+    func passFavoriteValue(pokemon: DummyPokemon) {
         let matchIndex = self.pokemonsList.firstIndex(where: {
             $0.number == pokemon.number
         })
