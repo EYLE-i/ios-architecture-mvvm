@@ -37,22 +37,8 @@ struct DummyPokemon {
     
     init(_ resource: DummyPokemonResult) {
         self.name = resource.name
-        self.number = generatePokeNumber(resource.url)
-        self.imageUrl = generatePokeImageUrl(self.number)
+        self.number = generatePokemonNumber(resource.url)
+        self.imageUrl = generatePokemonImageUrl(self.number)
         self.isFavorite = false
     }
-}
-
-func generatePokeNumber(_ url: String) -> Int {
-    var removePrefix = url.replacingOccurrences(
-        of: "https://pokeapi.co/api/v2/pokemon/", with: ""
-    )
-    removePrefix.removeLast()
-    return Int(removePrefix) ?? 0
-}
-
-func generatePokeImageUrl(_ no: Int) -> URL? {
-    let strNo = String(no)
-    let imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(strNo).png"
-    return URL(string: imageUrl)
 }
