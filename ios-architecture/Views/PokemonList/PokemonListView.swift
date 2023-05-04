@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PokemonListView: UIView {
+class PokemonListView: XibLoadView {
     public let cellIdentifier = "PokemonListTableViewCell"
     @IBOutlet weak var favoriteFilterButton: UIButton!
     @IBOutlet weak var typeFilterButton: UIButton!
