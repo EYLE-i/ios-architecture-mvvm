@@ -31,10 +31,12 @@ final class PokemonListModel {
     
     func requestPokemonList(_ completion: @escaping (Result<[Pokemon], APIError>) -> Void) {
         pokemonListAPI.requestPokemonList { [weak self] result in
-            if case .success(let pokemonList) = result {
-                self?.pokemonList = pokemonList
+            DispatchQueue.main.async {
+                if case .success(let pokemonList) = result {
+                    self?.pokemonList = pokemonList
+                }
+                completion(result)
             }
-            completion(result)
         }
     }
     
