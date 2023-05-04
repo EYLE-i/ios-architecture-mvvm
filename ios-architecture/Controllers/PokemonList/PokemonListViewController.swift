@@ -22,6 +22,8 @@ class PokemonListViewController: UIViewController {
         }
     }
     
+    private var isCheckFavoriteFilter = false
+    
     deinit {
         model.notificationCenter.removeObserver(self)
     }
@@ -65,6 +67,10 @@ class PokemonListViewController: UIViewController {
             }
         }
     }
+    
+    private func filteredTableDataList() {
+        tableDataList = model.pokemonFiltered(isFilterFavorite: isCheckFavoriteFilter, favoriteNumbers: model.favoriteNumbers)
+    }
 }
 
 extension PokemonListViewController: UITableViewDelegate {
@@ -80,9 +86,27 @@ extension PokemonListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: myView.cellIdentifier, for: indexPath) as! PokemonListTableViewCell
+        cell.delegate = self
         let data = tableDataList[indexPath.row]
         cell.nameLabel.text = data.name
         cell.favoriteButton.isSelected = model.favoriteNumbers.contains(data.number)
         return cell
+    }
+}
+
+extension PokemonListViewController: PokemonListTableViewCellDelegate {
+    func pokemonListTableViewCell(_ cell: PokemonListTableViewCell, didChangeFavorite sender: Any) {
+        guard let indexPath = myView.tableView.indexPath(for: cell) else {
+            return
+        }
+        let data = tableDataList[indexPath.row]
+        let result = model.updateFavoriteNumbers(number: data.number)
+        switch result {
+        case .success:
+            filteredTableDataList()
+        case .failure:
+            print("failure")
+            return
+        }
     }
 }
