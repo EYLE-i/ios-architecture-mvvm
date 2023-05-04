@@ -1,5 +1,5 @@
 //
-//  PokemoListView.swift
+//  PokemonListView.swift
 //  ios-architecture
 //
 //  Created by AIR on 2023/04/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PokemoListView: UIView {
+class PokemonListView: UIView {
     public let cellIdentifier = "PokemonListTableViewCell"
     @IBOutlet weak var favoriteFilterButton: UIButton!
     @IBOutlet weak var typeFilterButton: UIButton!
