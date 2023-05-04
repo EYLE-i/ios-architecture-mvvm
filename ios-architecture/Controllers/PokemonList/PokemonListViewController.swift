@@ -40,6 +40,7 @@ class PokemonListViewController: UIViewController {
     }
     
     private func updateView() {
+        myView.favoriteFilterButton.isSelected = isCheckFavoriteFilter
         myView.tableView.reloadData()
     }
     
@@ -52,6 +53,7 @@ class PokemonListViewController: UIViewController {
         
         myView.tableView.delegate = self
         myView.tableView.dataSource = self
+        myView.favoriteFilterButton.addTarget(self, action: #selector(filterByFavorite(_:)), for: .touchUpInside)
         
         model = PokemonListModel(dataStore: FavoritePokemonDataStoreImpl(), apiClient: DefaultAPIClient.shared)
         requestPokemonList()
@@ -70,6 +72,11 @@ class PokemonListViewController: UIViewController {
     
     private func filteredTableDataList() {
         tableDataList = model.pokemonFiltered(isFilterFavorite: isCheckFavoriteFilter, favoriteNumbers: model.favoriteNumbers)
+    }
+    
+    @objc private func filterByFavorite(_ sender: Any) {
+        isCheckFavoriteFilter.toggle()
+        filteredTableDataList()
     }
 }
 
