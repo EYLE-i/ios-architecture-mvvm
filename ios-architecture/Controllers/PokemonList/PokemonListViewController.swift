@@ -59,6 +59,13 @@ class PokemonListViewController: UIViewController {
         requestPokemonList()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let indexPath = myView.tableView.indexPathForSelectedRow {
+            myView.tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
     private func requestPokemonList() {
         model.requestPokemonList{ result in
             switch result {
