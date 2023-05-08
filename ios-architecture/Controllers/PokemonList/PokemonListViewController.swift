@@ -89,7 +89,9 @@ class PokemonListViewController: UIViewController {
 
 extension PokemonListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected")
+        let storyBoard = UIStoryboard(name: "PokemonDetail", bundle: nil)
+        let nextVC = storyBoard.instantiateViewController(withIdentifier: "PokemonDetail") as! PokemonDetailViewController
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 

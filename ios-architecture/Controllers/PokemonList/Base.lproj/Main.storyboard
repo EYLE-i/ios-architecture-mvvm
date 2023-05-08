@@ -4,10 +4,11 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Pokemon List View Controller-->
+        <!--PokemonList-->
         <scene sceneID="n1f-Zb-qvp">
             <objects>
                 <viewController id="Q1S-S1-VB4" customClass="PokemonListViewController" customModule="ios_architecture" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +18,7 @@
                         <viewLayoutGuide key="safeArea" id="GUp-4U-u90"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <navigationItem key="navigationItem" id="7gW-nw-MAa"/>
+                    <navigationItem key="navigationItem" title="PokemonList" id="7gW-nw-MAa"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z3C-gL-9pv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -31,6 +32,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hvZ-OH-B7e">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemPinkColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -42,4 +44,9 @@
             <point key="canvasLocation" x="199" y="-2"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
