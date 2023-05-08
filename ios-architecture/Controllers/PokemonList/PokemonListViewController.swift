@@ -104,6 +104,7 @@ extension PokemonListViewController: UITableViewDataSource {
         let data = tableDataList[indexPath.row]
         cell.nameLabel.text = data.name
         cell.favoriteButton.isSelected = model.favoriteNumbers.contains(data.number)
+        cell.setImage(data.imageUrl)
         return cell
     }
 }
