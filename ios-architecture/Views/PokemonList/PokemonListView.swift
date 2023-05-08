@@ -14,6 +14,7 @@ class PokemonListView: XibLoadView {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.register(UINib(nibName: cellIdentifier, bundle: Bundle(for: type(of: self))), forCellReuseIdentifier: cellIdentifier)
+            tableView.rowHeight = 60
         }
     }
 }
