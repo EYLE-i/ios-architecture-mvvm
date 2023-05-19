@@ -1,50 +1,52 @@
 //
-//  PokemonListAPI.swift
+//  PokemonDetailAPI.swift
 //  ios-architecture
 //
-//  Created by AIR on 2023/04/26.
+//  Created by AIR on 2023/05/09.
 //
 
 import Foundation
 
-class PokemonListAPI {
+class PokemonDetailAPI {
     private let apiClient: APIClient
     
     init(apiClient: APIClient) {
         self.apiClient = apiClient
     }
     
-    private let request = PokemonListAPIRequest()
+    private let request = PokemonDetailAPIRequest(id: "1")
     
-    func requestPokemonList(completion: @escaping (Result<[Pokemon], APIError>) -> Void) {
+    func requestPokemonDetail(pokeId: String, completion: @escaping (Result<PokemonDetailResponse, APIError>) -> Void) {
         apiClient.request(request) { result in
             switch result {
             case .success(let data):
-                let pokemonList = data.results.map { Pokemon($0) }
-                completion(.success(pokemonList))
+                completion(.success(data))
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
+    
 }
 
-struct PokemonListAPIRequest: Requestable {
-    typealias Model = PokemonResponse
+struct PokemonDetailAPIRequest: Requestable {
+    typealias Model = PokemonDetailResponse
     
     var url: String {
         return "https://pokeapi.co/api/v2/"
     }
     
     var path: String {
-        return "pokemon"
+        return "ability" + "/" + id
     }
+    
+    var id: String
     
     var httpMethod: String {
         return "GET"
     }
     
-    var headers: [String: String] {
+    var headers: [String : String] {
         return [:]
     }
     
@@ -52,15 +54,15 @@ struct PokemonListAPIRequest: Requestable {
         return nil
     }
     
-    var queries: [String: String] {
-        return ["limit": "1281"]
+    var queries: [String : String] {
+        return [:]
     }
     
     var timeout: TimeInterval {
         return 60
     }
     
-    func decode(from data: Data) throws -> Model {
+    func decode(from data: Data) throws -> PokemonDetailResponse {
         let decoder = JSONDecoder()
         return try decoder.decode(Model.self, from: data)
     }

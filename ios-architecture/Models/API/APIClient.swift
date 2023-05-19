@@ -17,6 +17,7 @@ enum APIError: Error {
 protocol Requestable {
     associatedtype Model
     var url: String { get }
+    var path: String { get }
     var httpMethod: String { get }
     var headers: [String: String] { get }
     var body: Data? { get }
@@ -27,7 +28,7 @@ protocol Requestable {
 
 extension Requestable {
     var urlRequest: URLRequest? {
-        guard var urlComponents = URLComponents(string: url) else { return nil }
+        guard var urlComponents = URLComponents(string: url + path) else { return nil }
         var urlQueryItems: [URLQueryItem] = []
         queries.forEach { key, value in
             urlQueryItems.append(URLQueryItem(name: key, value: value))
