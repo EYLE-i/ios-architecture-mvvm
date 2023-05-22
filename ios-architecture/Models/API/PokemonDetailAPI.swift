@@ -14,10 +14,8 @@ class PokemonDetailAPI {
         self.apiClient = apiClient
     }
     
-    private let request = PokemonDetailAPIRequest(id: "1")
-    
     func requestPokemonDetail(pokeId: String, completion: @escaping (Result<PokemonDetailResponse, APIError>) -> Void) {
-        apiClient.request(request) { result in
+        apiClient.request(PokemonDetailAPIRequest(id: pokeId)) { result in
             switch result {
             case .success(let data):
                 completion(.success(data))
