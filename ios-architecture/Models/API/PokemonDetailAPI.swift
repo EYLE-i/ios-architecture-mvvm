@@ -35,7 +35,7 @@ struct PokemonDetailAPIRequest: Requestable {
     }
     
     var path: String {
-        return "ability" + "/" + id
+        return "pokemon" + "/" + id
     }
     
     var id: String
