@@ -85,13 +85,17 @@ class PokemonListViewController: UIViewController {
         isCheckFavoriteFilter.toggle()
         filteredTableDataList()
     }
+    
+    func pushPokemonDetailVC() {
+        let storyBoard = UIStoryboard(name: "PokemonDetail", bundle: nil)
+        let viewController = storyBoard.instantiateViewController(withIdentifier: "PokemonDetail") as! PokemonDetailViewController
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 extension PokemonListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyBoard = UIStoryboard(name: "PokemonDetail", bundle: nil)
-        let nextVC = storyBoard.instantiateViewController(withIdentifier: "PokemonDetail") as! PokemonDetailViewController
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        pushPokemonDetailVC()
     }
 }
 
