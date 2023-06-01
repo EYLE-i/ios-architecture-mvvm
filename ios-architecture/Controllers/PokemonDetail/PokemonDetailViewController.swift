@@ -14,10 +14,19 @@ class PokemonDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateView()
     }
     
     override func loadView() {
         view = myView
+    }
+    
+    private func updateView() {
+        let borderWidth = 0.5
+        let borderColor = UIColor.black
+        myView.numberView.addBorder(width: borderWidth, color: borderColor)
+        myView.nameView.addBorder(width: borderWidth, color: borderColor)
+        myView.heightView.addBorder(width: borderWidth, color: borderColor)
+        myView.weightView.addBorder(width: borderWidth, color: borderColor)
     }
 }
