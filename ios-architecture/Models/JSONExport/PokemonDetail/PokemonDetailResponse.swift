@@ -8,8 +8,17 @@
 import Foundation
 
 struct PokemonDetail {
-    var name: String
     var number: Int
+    var name: String
+    var height: Int
+    var weight: Int
+    
+    init(number: Int, response: PokemonDetailResponse) {
+        self.number = number
+        self.name = response.name
+        self.height = response.height
+        self.weight = response.weight
+    }
 }
 
 
@@ -19,20 +28,20 @@ struct PokemonDetailResponse: Decodable {
     var baseExperience: Int?
     var forms: [Species]?
     var gameIndices: [GameIndex]?
-    var height: Int?
+    var height: Int
     var heldItems: [String?]?
     var id: Int?
     var isDefault: Bool?
     var locationAreaEncounters: String?
     var moves: [Move]?
-    var name: String?
+    var name: String
     var order: Int?
     var pastTypes: [String?]?
     var species: Species?
     var sprites: Sprites?
     var stats: [Stat]?
     var types: [TypeElement]?
-    var weight: Int?
+    var weight: Int
 }
 
 // MARK: - Ability

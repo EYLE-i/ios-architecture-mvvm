@@ -14,11 +14,12 @@ class PokemonDetailAPI {
         self.apiClient = apiClient
     }
     
-    func requestPokemonDetail(pokeId: String, completion: @escaping (Result<PokemonDetailResponse, APIError>) -> Void) {
+    func requestPokemonDetail(pokeId: Int, completion: @escaping (Result<PokemonDetail, APIError>) -> Void) {
         apiClient.request(PokemonDetailAPIRequest(id: pokeId)) { result in
             switch result {
             case .success(let data):
-                completion(.success(data))
+                let pokemonDetail = PokemonDetail(number: pokeId, response: data)
+                completion(.success(pokemonDetail))
             case .failure(let error):
                 completion(.failure(error))
             }
@@ -35,10 +36,10 @@ struct PokemonDetailAPIRequest: Requestable {
     }
     
     var path: String {
-        return "pokemon" + "/" + id
+        return "pokemon" + "/" + String(id)
     }
     
-    var id: String
+    var id: Int
     
     var httpMethod: String {
         return "GET"
