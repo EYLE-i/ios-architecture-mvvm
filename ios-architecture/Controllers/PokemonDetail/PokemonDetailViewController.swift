@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PokemonDetailViewController: UIViewController {
+class PokemonDetailViewController: UIViewController, AlertViewController{
     var model: PokemonDetailModel! {
         didSet {
             registerModel()
@@ -37,12 +37,14 @@ class PokemonDetailViewController: UIViewController {
     }
     
     private func requestPokemonDetail() {
-        model.requestPokemonDetail { result in
+        model.requestPokemonDetail { [weak self] result in
             switch result {
             case .success:
                 break
-            case .failure:
-                print("failure")
+            case .failure(let error):
+                _ = self?.failure(title: error.title, message: error.description, retry: "リトライ") { _ in
+                    self?.requestPokemonDetail()
+                }
             }
         }
     }
