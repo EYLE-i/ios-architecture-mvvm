@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PokemonListViewController: UIViewController {
+class PokemonListViewController: UIViewController, AlertViewController {
     var model: PokemonListModel! {
         didSet {
             registerModel()
@@ -67,12 +67,14 @@ class PokemonListViewController: UIViewController {
     }
     
     private func requestPokemonList() {
-        model.requestPokemonList{ result in
+        model.requestPokemonList{ [weak self] result in
             switch result {
             case .success:
                 break
-            case .failure:
-                print("failure")
+            case .failure(let error):
+                _ = self?.failure(title: error.title, message: error.description, retry: "リトライ") { _ in
+                    self?.requestPokemonList()
+                }
             }
         }
     }
@@ -128,8 +130,8 @@ extension PokemonListViewController: PokemonListTableViewCellDelegate {
         switch result {
         case .success:
             filteredTableDataList()
-        case .failure:
-            print("failure")
+        case .failure(let error):
+            print(error)
             return
         }
     }
