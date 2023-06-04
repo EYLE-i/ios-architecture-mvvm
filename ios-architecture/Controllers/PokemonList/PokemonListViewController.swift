@@ -86,16 +86,19 @@ class PokemonListViewController: UIViewController {
         filteredTableDataList()
     }
     
-    func pushPokemonDetailVC() {
+    func pushPokemonDetailVC(model: PokemonDetailModel) {
         let storyBoard = UIStoryboard(name: "PokemonDetail", bundle: nil)
         let viewController = storyBoard.instantiateViewController(withIdentifier: "PokemonDetail") as! PokemonDetailViewController
+        viewController.model = model
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
 extension PokemonListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        pushPokemonDetailVC()
+        let data = tableDataList[indexPath.row]
+        let pokemonDetailModel = PokemonDetailModel(pokeId: data.number, imageUrl: data.imageUrl!, apiClient: DefaultAPIClient.shared)
+        pushPokemonDetailVC(model: pokemonDetailModel)
     }
 }
 

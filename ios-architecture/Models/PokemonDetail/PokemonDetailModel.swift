@@ -20,14 +20,16 @@ final class PokemonDetailModel {
     
     private let pokemonDetailAPI: PokemonDetailAPI
     private let pokeId: Int
+    private let imageUrl: URL
     
-    init(pokeId: Int, apiClient: APIClient) {
+    init(pokeId: Int, imageUrl: URL, apiClient: APIClient) {
         self.pokeId = pokeId
+        self.imageUrl = imageUrl
         self.pokemonDetailAPI = .init(apiClient: apiClient)
     }
     
     func requestPokemonDetail(_ completion: @escaping (Result<PokemonDetail, APIError>) -> Void) {
-        pokemonDetailAPI.requestPokemonDetail(pokeId: pokeId) { [weak self] result in
+        pokemonDetailAPI.requestPokemonDetail(pokeId: pokeId, imageUrl: imageUrl) { [weak self] result in
             if case .success(let pokemonDetail) = result {
                 self?.pokemonDetail = pokemonDetail
             }

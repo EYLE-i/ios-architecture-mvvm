@@ -12,12 +12,14 @@ struct PokemonDetail {
     var name: String
     var height: Int
     var weight: Int
+    var imageUrl: URL?
     
-    init(number: Int, response: PokemonDetailResponse) {
+    init(number: Int, imageUrl: URL, response: PokemonDetailResponse) {
         self.number = number
         self.name = response.name
         self.height = response.height
         self.weight = response.weight
+        self.imageUrl = imageUrl
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PokemonDetailView: XibLoadView {
 
@@ -14,6 +15,18 @@ class PokemonDetailView: XibLoadView {
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var heightView: UIView!
     @IBOutlet weak var weightView: UIView!
+    
+    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var heightLabel: UILabel!
+    @IBOutlet weak var weightLabel: UILabel!
+    
+    func setImage(_ imageUrl: URL?) {
+        pokemonImageView.kf.setImage(
+            with: imageUrl,
+            placeholder: UIImage(named: "monsterBall")
+        )
+    }
 }
 
 extension UIView {
