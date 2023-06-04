@@ -72,9 +72,12 @@ class PokemonListViewController: UIViewController, AlertViewController {
             case .success:
                 break
             case .failure(let error):
-                _ = self?.failure(title: error.title, message: error.description, retry: "リトライ") { _ in
+                _ = self?.failure(title: error.title, message: error.description, retry: "リトライ", retryHandler: { _ in
                     self?.requestPokemonList()
-                }
+                }, cancelHandler: { _ in
+                    self?.myView.favoriteFilterButton.isEnabled = false
+                    self?.myView.favoriteFilterButton.isHighlighted = false
+                })
             }
         }
     }
