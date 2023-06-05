@@ -22,7 +22,7 @@ class PokemonDetailView: XibLoadView {
     @IBOutlet weak var weightLabel: UILabel!
     
     func setImage(_ imageUrl: URL?) {
-        pokemonImageView.kf.setImage(
+        self.pokemonImageView.kf.setImage(
             with: imageUrl,
             placeholder: UIImage(named: "monsterBall")
         )

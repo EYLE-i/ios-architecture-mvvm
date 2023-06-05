@@ -33,7 +33,6 @@ class PokemonDetailViewController: UIViewController, AlertViewController{
         myView.nameLabel.text = pokemonDetail.name
         myView.heightLabel.text = String(pokemonDetail.height)
         myView.weightLabel.text = String(pokemonDetail.weight)
-        myView.setImage(pokemonDetail.imageUrl)
     }
     
     private func requestPokemonDetail() {
@@ -54,6 +53,7 @@ class PokemonDetailViewController: UIViewController, AlertViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         requestPokemonDetail()
+        myView.setImage(model.imageUrl)
         addBottomLineToView()
     }
     

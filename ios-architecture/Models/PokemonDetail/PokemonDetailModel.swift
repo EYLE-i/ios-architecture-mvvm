@@ -20,7 +20,7 @@ final class PokemonDetailModel {
     
     private let pokemonDetailAPI: PokemonDetailAPI
     private let pokeId: Int
-    private let imageUrl: URL
+    let imageUrl: URL
     
     init(pokeId: Int, imageUrl: URL, apiClient: APIClient) {
         self.pokeId = pokeId
