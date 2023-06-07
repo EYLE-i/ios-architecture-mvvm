@@ -8,7 +8,7 @@
 import UIKit
 import PKHUD
 
-class PokemonDetailViewController: UIViewController, AlertViewController{
+class PokemonDetailViewController: UIViewController, AlertViewController {
     var model: PokemonDetailModel! {
         didSet {
             registerModel()
@@ -27,6 +27,24 @@ class PokemonDetailViewController: UIViewController, AlertViewController{
                 }
             }
         }
+    }
+    
+    private lazy var myView = PokemonDetailView()
+    
+    override func loadView() {
+        view = myView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        visibleHUD(isVisible: true)
+        requestPokemonDetail()
+        setUpView()
+    }
+    
+    private func setUpView() {
+        myView.setImage(model.imageUrl)
+        myView.setBorder()
     }
     
     private func updateView(pokemonDetail: PokemonDetail) {
@@ -50,20 +68,6 @@ class PokemonDetailViewController: UIViewController, AlertViewController{
         }
     }
     
-    private lazy var myView = PokemonDetailView()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        visibleHUD(isVisible: true)
-        requestPokemonDetail()
-        myView.setImage(model.imageUrl)
-        addBottomLineToView()
-    }
-    
-    override func loadView() {
-        view = myView
-    }
-    
     private func visibleHUD(isVisible: Bool) {
         DispatchQueue.main.async {
             if isVisible {
@@ -72,14 +76,5 @@ class PokemonDetailViewController: UIViewController, AlertViewController{
                 HUD.hide()
             }
         }
-    }
-    
-    private func addBottomLineToView() {
-        let borderWidth = 0.5
-        let borderColor = UIColor.black
-        myView.numberView.addBorder(width: borderWidth, color: borderColor)
-        myView.nameView.addBorder(width: borderWidth, color: borderColor)
-        myView.heightView.addBorder(width: borderWidth, color: borderColor)
-        myView.weightView.addBorder(width: borderWidth, color: borderColor)
     }
 }

@@ -27,6 +27,15 @@ class PokemonDetailView: XibLoadView {
             placeholder: UIImage(named: "monsterBall")
         )
     }
+    
+    func setBorder() {
+        let borderWidth = 0.5
+        let borderColor = UIColor.black
+        self.numberView.addBorder(width: borderWidth, color: borderColor)
+        self.nameView.addBorder(width: borderWidth, color: borderColor)
+        self.heightView.addBorder(width: borderWidth, color: borderColor)
+        self.weightView.addBorder(width: borderWidth, color: borderColor)
+    }
 }
 
 extension UIView {
