@@ -11,6 +11,7 @@
 		451594D929F29E990044B5B7 /* XibLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451594D829F29E990044B5B7 /* XibLoadView.swift */; };
 		451594DD29F546EF0044B5B7 /* PokemonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451594DC29F546EF0044B5B7 /* PokemonListView.swift */; };
 		451594DF29F547D60044B5B7 /* PokemonListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 451594DE29F547D60044B5B7 /* PokemonListView.xib */; };
+		45734CB42A309299007675A3 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 45734CB32A309299007675A3 /* PKHUD */; };
 		45778EA82A0948E200A2D1B4 /* PokemonDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45778EA72A0948E200A2D1B4 /* PokemonDetail.storyboard */; };
 		45778EAA2A09491C00A2D1B4 /* PokemonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45778EA92A09491C00A2D1B4 /* PokemonDetailViewController.swift */; };
 		45778EAD2A094B4D00A2D1B4 /* PokemonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45778EAC2A094B4D00A2D1B4 /* PokemonDetailView.swift */; };
@@ -69,6 +70,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4585BFE829ED7A03009605BD /* Kingfisher in Frameworks */,
+				45734CB42A309299007675A3 /* PKHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +271,7 @@
 			name = "ios-architecture";
 			packageProductDependencies = (
 				4585BFE729ED7A03009605BD /* Kingfisher */,
+				45734CB32A309299007675A3 /* PKHUD */,
 			);
 			productName = "ios-architecture";
 			productReference = 458B4CD529D96B69003AB41B /* ios-architecture.app */;
@@ -300,6 +303,7 @@
 			mainGroup = 458B4CCC29D96B69003AB41B;
 			packageReferences = (
 				4585BFE629ED7A03009605BD /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				45734CB22A309299007675A3 /* XCRemoteSwiftPackageReference "PKHUD" */,
 			);
 			productRefGroup = 458B4CD629D96B69003AB41B /* Products */;
 			projectDirPath = "";
@@ -568,6 +572,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		45734CB22A309299007675A3 /* XCRemoteSwiftPackageReference "PKHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pkluz/PKHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		4585BFE629ED7A03009605BD /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -579,6 +591,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		45734CB32A309299007675A3 /* PKHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 45734CB22A309299007675A3 /* XCRemoteSwiftPackageReference "PKHUD" */;
+			productName = PKHUD;
+		};
 		4585BFE729ED7A03009605BD /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4585BFE629ED7A03009605BD /* XCRemoteSwiftPackageReference "Kingfisher" */;

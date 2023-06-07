@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class PokemonDetailViewController: UIViewController, AlertViewController{
     var model: PokemonDetailModel! {
@@ -39,6 +40,7 @@ class PokemonDetailViewController: UIViewController, AlertViewController{
         model.requestPokemonDetail { [weak self] result in
             switch result {
             case .success:
+                self?.visibleHUD(isVisible: false)
                 break
             case .failure(let error):
                 _ = self?.failure(title: error.title, message: error.description, retry: "リトライ") { _ in
@@ -52,6 +54,7 @@ class PokemonDetailViewController: UIViewController, AlertViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        visibleHUD(isVisible: true)
         requestPokemonDetail()
         myView.setImage(model.imageUrl)
         addBottomLineToView()
@@ -59,6 +62,16 @@ class PokemonDetailViewController: UIViewController, AlertViewController{
     
     override func loadView() {
         view = myView
+    }
+    
+    private func visibleHUD(isVisible: Bool) {
+        DispatchQueue.main.async {
+            if isVisible {
+                HUD.show(.progress)
+            } else {
+                HUD.hide()
+            }
+        }
     }
     
     private func addBottomLineToView() {
