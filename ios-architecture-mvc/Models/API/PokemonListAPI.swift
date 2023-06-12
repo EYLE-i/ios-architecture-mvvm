@@ -7,7 +7,11 @@
 
 import Foundation
 
-class PokemonListAPI {
+protocol PokemonListAPIProtocol {
+    func requestPokemonList(completion: @escaping (Result<[Pokemon], APIError>) -> Void)
+}
+
+class PokemonListAPI: PokemonListAPIProtocol {
     private let apiClient: APIClient
     
     init(apiClient: APIClient) {
