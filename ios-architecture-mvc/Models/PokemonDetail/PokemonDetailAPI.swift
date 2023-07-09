@@ -28,8 +28,8 @@ class PokemonDetailAPI {
     
 }
 
-struct PokemonDetailAPIRequest: Requestable {
-    typealias Model = PokemonDetailResponse
+struct PokemonDetailAPIRequest: APIRequest {
+    typealias ResponseType = PokemonDetailResponse
     
     var url: String {
         return "https://pokeapi.co/api/v2/"
@@ -63,6 +63,6 @@ struct PokemonDetailAPIRequest: Requestable {
     
     func decode(from data: Data) throws -> PokemonDetailResponse {
         let decoder = JSONDecoder()
-        return try decoder.decode(Model.self, from: data)
+        return try decoder.decode(ResponseType.self, from: data)
     }
 }

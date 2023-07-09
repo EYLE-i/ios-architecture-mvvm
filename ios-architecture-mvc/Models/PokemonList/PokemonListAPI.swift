@@ -33,8 +33,8 @@ class PokemonListAPI: PokemonListAPIProtocol {
     }
 }
 
-struct PokemonListAPIRequest: Requestable {
-    typealias Model = PokemonResponse
+struct PokemonListAPIRequest: APIRequest {
+    typealias ResponseType = PokemonResponse
     
     var url: String {
         return "https://pokeapi.co/api/v2/"
@@ -64,8 +64,8 @@ struct PokemonListAPIRequest: Requestable {
         return 60
     }
     
-    func decode(from data: Data) throws -> Model {
+    func decode(from data: Data) throws -> ResponseType {
         let decoder = JSONDecoder()
-        return try decoder.decode(Model.self, from: data)
+        return try decoder.decode(ResponseType.self, from: data)
     }
 }
