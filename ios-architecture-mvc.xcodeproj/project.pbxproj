@@ -35,6 +35,7 @@
 		4599A22B29F967A300668A44 /* PokemonListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4599A22A29F967A300668A44 /* PokemonListAPI.swift */; };
 		45B78B0B2A5A55A4002F1FD0 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B78B0A2A5A55A4002F1FD0 /* APIError.swift */; };
 		45B78B0D2A5A5841002F1FD0 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B78B0C2A5A5841002F1FD0 /* APIRequest.swift */; };
+		45B78B0F2A5C1745002F1FD0 /* APIErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B78B0E2A5C1745002F1FD0 /* APIErrorTests.swift */; };
 		45CBF3702A1B7B6700F5DB24 /* PokemonDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CBF36F2A1B7B6700F5DB24 /* PokemonDetailModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		4599A22A29F967A300668A44 /* PokemonListAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListAPI.swift; sourceTree = "<group>"; };
 		45B78B0A2A5A55A4002F1FD0 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		45B78B0C2A5A5841002F1FD0 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		45B78B0E2A5C1745002F1FD0 /* APIErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorTests.swift; sourceTree = "<group>"; };
 		45CBF36F2A1B7B6700F5DB24 /* PokemonDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				4515878B2A30C07400AFDF09 /* ios_architecture_mvcTests.swift */,
+				45B78B0E2A5C1745002F1FD0 /* APIErrorTests.swift */,
 			);
 			path = "ios-architecture-mvcTests";
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4515878C2A30C07400AFDF09 /* ios_architecture_mvcTests.swift in Sources */,
+				45B78B0F2A5C1745002F1FD0 /* APIErrorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

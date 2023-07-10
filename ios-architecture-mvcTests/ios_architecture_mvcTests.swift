@@ -32,7 +32,7 @@ class MockPokemonListAPI: PokemonListAPIProtocol {
         return pokemons
     }
     
-    func requestPokemonList(completion: @escaping (Result<[ios_architecture_mvc.Pokemon], ios_architecture_mvc.APIError>) -> Void) {
+    func requestPokemonList(completion: @escaping (Result<[Pokemon], APIError>) -> Void) {
         completion(requestResult)
         switch requestResult {
         case .success:
@@ -44,6 +44,7 @@ class MockPokemonListAPI: PokemonListAPIProtocol {
 }
 
 final class ios_architecture_mvcTests: XCTestCase {
+    private var mockPokemonListAPI: MockPokemonListAPI!
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -53,21 +54,21 @@ final class ios_architecture_mvcTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testExample() throws {
-        let mockAPI = MockPokemonListAPI()
+    func test_成功pokemonListを返す() throws {
+        mockPokemonListAPI = MockPokemonListAPI()
         let expectation = expectation(description: "")
         
-        mockAPI.requestPokemonList { result in
+        mockPokemonListAPI.requestPokemonList { result in
             switch result {
-            case .success(let pokemon):
-                XCTAssertEqual(pokemon[0].name, "name0")
-                XCTAssertEqual(pokemon[1].number, 1)
+            case .success(let pokemonList):
+                XCTAssertEqual(pokemonList[0].name, "name0")
+                XCTAssertEqual(pokemonList[0].number, 0)
+                XCTAssertEqual(pokemonList[0].imageUrl, URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png"))
                 expectation.fulfill()
             default:
                 print("default")
             }
         }
-        
         wait(for: [expectation], timeout: 5)
     }
     
