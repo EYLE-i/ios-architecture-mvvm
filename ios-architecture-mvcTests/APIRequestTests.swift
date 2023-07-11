@@ -45,6 +45,7 @@ final class APIRequestTests: XCTestCase {
         
         XCTAssertNotNil(urlRequest)
         XCTAssertEqual(urlRequest?.url?.absoluteString, "https://example.com/api?param1=value1&param2=value2")
+        XCTAssertEqual(request.urlRequest?.allHTTPHeaderFields?.count, 1)
         XCTAssertEqual(urlRequest?.httpMethod, "GET")
         XCTAssertEqual(urlRequest?.allHTTPHeaderFields?["Content-Type"], "application/json")
         XCTAssertNil(urlRequest?.httpBody)
