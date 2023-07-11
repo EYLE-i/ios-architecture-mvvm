@@ -28,8 +28,8 @@ enum APIError: Error {
     
     var description: String {
         switch self {
-        case .server:
-            return "サーバーエラーです。"
+        case .server(let code):
+            return "サーバーエラーです。(\(code))"
         case .decode:
             return "デコードエラーです。"
         case .noResponse:
