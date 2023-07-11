@@ -37,6 +37,7 @@
 		45B78B0D2A5A5841002F1FD0 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B78B0C2A5A5841002F1FD0 /* APIRequest.swift */; };
 		45B78B0F2A5C1745002F1FD0 /* APIErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B78B0E2A5C1745002F1FD0 /* APIErrorTests.swift */; };
 		45B78B112A5D65CB002F1FD0 /* APIRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B78B102A5D65CB002F1FD0 /* APIRequestTests.swift */; };
+		45B78B132A5D6920002F1FD0 /* PokemonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B78B122A5D6920002F1FD0 /* PokemonTests.swift */; };
 		45CBF3702A1B7B6700F5DB24 /* PokemonDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CBF36F2A1B7B6700F5DB24 /* PokemonDetailModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		45B78B0C2A5A5841002F1FD0 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		45B78B0E2A5C1745002F1FD0 /* APIErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorTests.swift; sourceTree = "<group>"; };
 		45B78B102A5D65CB002F1FD0 /* APIRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestTests.swift; sourceTree = "<group>"; };
+		45B78B122A5D6920002F1FD0 /* PokemonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTests.swift; sourceTree = "<group>"; };
 		45CBF36F2A1B7B6700F5DB24 /* PokemonDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +113,7 @@
 				4515878B2A30C07400AFDF09 /* ios_architecture_mvcTests.swift */,
 				45B78B0E2A5C1745002F1FD0 /* APIErrorTests.swift */,
 				45B78B102A5D65CB002F1FD0 /* APIRequestTests.swift */,
+				45B78B122A5D6920002F1FD0 /* PokemonTests.swift */,
 			);
 			path = "ios-architecture-mvcTests";
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4515878C2A30C07400AFDF09 /* ios_architecture_mvcTests.swift in Sources */,
+				45B78B132A5D6920002F1FD0 /* PokemonTests.swift in Sources */,
 				45B78B112A5D65CB002F1FD0 /* APIRequestTests.swift in Sources */,
 				45B78B0F2A5C1745002F1FD0 /* APIErrorTests.swift in Sources */,
 			);
