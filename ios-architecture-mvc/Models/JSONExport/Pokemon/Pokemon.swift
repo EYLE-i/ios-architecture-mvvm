@@ -35,7 +35,9 @@ func generatePokemonNumber(_ url: String) -> Int {
     var removePrefix = url.replacingOccurrences(
         of: "https://pokeapi.co/api/v2/pokemon/", with: ""
     )
-    removePrefix.removeLast()
+    if !removePrefix.isEmpty {
+        removePrefix.removeLast()
+    }
     return Int(removePrefix) ?? 0
 }
 
