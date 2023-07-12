@@ -29,7 +29,6 @@ extension APIRequest {
         if !urlQueryItems.isEmpty {
             urlComponents.queryItems = urlQueryItems
         }
-        urlComponents.queryItems = urlQueryItems
         guard let url = urlComponents.url else { return nil }
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod
