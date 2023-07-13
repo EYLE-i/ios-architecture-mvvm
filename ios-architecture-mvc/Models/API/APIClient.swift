@@ -42,3 +42,18 @@ final class DefaultAPIClient: APIClient {
         task.resume()
     }
 }
+
+
+final class DummyAPIClient<T: APIRequest>: APIClient {
+    let result: Result<T.ResponseType, APIError>
+    
+    init(result: Result<T.ResponseType, APIError>) {
+        self.result = result
+    }
+    
+    func request<T: APIRequest>(_ requestable: T, completion: @escaping (Result<T.ResponseType, APIError>) -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            completion(self.result as! Result<T.ResponseType, APIError>)
+        }
+    }
+}
