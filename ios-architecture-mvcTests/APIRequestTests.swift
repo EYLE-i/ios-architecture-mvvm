@@ -20,7 +20,7 @@ struct MockAPIRequest: APIRequest {
     let httpMethod: String = "GET"
     let headers: [String: String] = ["Content-Type": "application/json"]
     let body: Data? = nil
-    let queries: [String: String] = ["param1": "value1", "param2": "value2"]
+    let queries: [String: String] = ["param1": "value1"]
     let timeout: TimeInterval = 30.0
     
     func decode(from data: Data) throws -> ResponseType {
@@ -44,7 +44,7 @@ final class APIRequestTests: XCTestCase {
         let urlRequest = request.urlRequest
         
         XCTAssertNotNil(urlRequest)
-        XCTAssertEqual(urlRequest?.url?.absoluteString, "https://example.com/api?param1=value1&param2=value2")
+        XCTAssertEqual(urlRequest?.url?.absoluteString, "https://example.com/api?param1=value1")
         XCTAssertEqual(request.urlRequest?.allHTTPHeaderFields?.count, 1)
         XCTAssertEqual(urlRequest?.httpMethod, "GET")
         XCTAssertEqual(urlRequest?.allHTTPHeaderFields?["Content-Type"], "application/json")

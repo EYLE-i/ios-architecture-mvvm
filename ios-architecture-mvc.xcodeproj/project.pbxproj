@@ -40,6 +40,7 @@
 		45B78B132A5D6920002F1FD0 /* PokemonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B78B122A5D6920002F1FD0 /* PokemonTests.swift */; };
 		45CBF3702A1B7B6700F5DB24 /* PokemonDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CBF36F2A1B7B6700F5DB24 /* PokemonDetailModel.swift */; };
 		45D40CF42A5F058400CB5EE8 /* PokemonListAPIRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D40CF32A5F058400CB5EE8 /* PokemonListAPIRequestTests.swift */; };
+		45D40CF62A60421E00CB5EE8 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D40CF52A60421E00CB5EE8 /* APIClientTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		45B78B122A5D6920002F1FD0 /* PokemonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTests.swift; sourceTree = "<group>"; };
 		45CBF36F2A1B7B6700F5DB24 /* PokemonDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailModel.swift; sourceTree = "<group>"; };
 		45D40CF32A5F058400CB5EE8 /* PokemonListAPIRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListAPIRequestTests.swift; sourceTree = "<group>"; };
+		45D40CF52A60421E00CB5EE8 /* APIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				45B78B102A5D65CB002F1FD0 /* APIRequestTests.swift */,
 				45B78B122A5D6920002F1FD0 /* PokemonTests.swift */,
 				45D40CF32A5F058400CB5EE8 /* PokemonListAPIRequestTests.swift */,
+				45D40CF52A60421E00CB5EE8 /* APIClientTests.swift */,
 			);
 			path = "ios-architecture-mvcTests";
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				4515878C2A30C07400AFDF09 /* ios_architecture_mvcTests.swift in Sources */,
 				45B78B132A5D6920002F1FD0 /* PokemonTests.swift in Sources */,
 				45B78B112A5D65CB002F1FD0 /* APIRequestTests.swift in Sources */,
+				45D40CF62A60421E00CB5EE8 /* APIClientTests.swift in Sources */,
 				45B78B0F2A5C1745002F1FD0 /* APIErrorTests.swift in Sources */,
 				45D40CF42A5F058400CB5EE8 /* PokemonListAPIRequestTests.swift in Sources */,
 			);
