@@ -45,15 +45,20 @@ final class DefaultAPIClient: APIClient {
 
 
 final class DummyAPIClient: APIClient {
-    let result: Result<Any, APIError>
+    let result: Result<Decodable, APIError>
     
-    init(result: Result<Any, APIError>) {
+    init(result: Result<Decodable, APIError>) {
         self.result = result
     }
     
     func request<T: APIRequest>(_ requestable: T, completion: @escaping (Result<T.ResponseType, APIError>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            completion(self.result as! Result<T.ResponseType, APIError>)
+            switch self.result {
+            case .success(let success):
+                completion(.success(success as! T.ResponseType))
+            case .failure(let failure):
+                completion(.failure(failure))
+            }
         }
     }
 }
