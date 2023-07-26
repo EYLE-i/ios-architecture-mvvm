@@ -8,7 +8,7 @@
 import Foundation
 
 protocol PokemonListAPIProtocol {
-    func requestPokemonList(completion: @escaping (Result<[Pokemon], APIError>) -> Void)
+    func requestPokemonList(completion: @escaping (_ result: Result<[Pokemon], APIError>) -> Void)
 }
 
 class PokemonListAPI: PokemonListAPIProtocol {
