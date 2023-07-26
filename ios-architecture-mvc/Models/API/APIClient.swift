@@ -44,12 +44,12 @@ final class DefaultAPIClient: APIClient {
 }
 
 
-final class DummyAPIClient: APIClient {
-    var dummyResult: Result<Decodable, APIError>?
+final class MockAPIClient: APIClient {
+    var mockResult: Result<Decodable, APIError>?
     
     func request<T: APIRequest>(_ requestable: T, completion: @escaping (Result<T.ResponseType, APIError>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            guard let dummyResult = self.dummyResult else {
+            guard let dummyResult = self.mockResult else {
                 completion(.failure(.unknown(NSError())))
                 return
             }
