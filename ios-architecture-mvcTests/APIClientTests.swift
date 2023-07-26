@@ -29,8 +29,8 @@ final class APIClientTests: XCTestCase {
         let request = MockRequest()
         let response = MockResponse()
         let expectedResult: Result<Decodable, APIError> = .success(response)
-        let api = DummyAPIClient()
-        api.dummyResult = expectedResult
+        let api = MockAPIClient()
+        api.mockResult = expectedResult
         
         let expectation = XCTestExpectation(description: "")
         
@@ -51,8 +51,8 @@ final class APIClientTests: XCTestCase {
         let request = MockRequest()
         let error: APIError = .noResponse
         let expectedResult: Result<Decodable, APIError> = .failure(error)
-        let api = DummyAPIClient()
-        api.dummyResult = expectedResult
+        let api = MockAPIClient()
+        api.mockResult = expectedResult
         
         let expectation = XCTestExpectation(description: "")
         
