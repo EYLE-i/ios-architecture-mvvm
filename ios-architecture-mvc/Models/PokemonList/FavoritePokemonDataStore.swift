@@ -23,9 +23,10 @@ struct FavoritePokemonDataStoreImpl: FavoritePokemonDataStore {
         case favoriteNumbers = "FAVORITE_POKEMON_NUMBERS"
     }
     
-    private let userDefaults = UserDefaults.standard
+    private var userDefaults: UserDefaults!
     
-    public init() {
+    public init(userDefaults: UserDefaults = UserDefaults.standard) {
+        self.userDefaults = userDefaults
     }
     
     func fetchAll() -> [Object] {
