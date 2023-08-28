@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/air/Documents/dev/swift/ios-architecture-mvp/ios-architecture-mvp.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>
