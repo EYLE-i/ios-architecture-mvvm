@@ -11,7 +11,6 @@ class PokemonListViewController: UIViewController, AlertViewController {
     private lazy var myView = PokemonListView()
     
     private var presenter: PokemonListPresenterInput!
-    var model = PokemonListModel()
     
     func inject(presenter: PokemonListPresenterInput) {
         self.presenter = presenter
@@ -20,10 +19,10 @@ class PokemonListViewController: UIViewController, AlertViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "PokemonList"
+        
         myView.tableView.delegate = self
         myView.tableView.dataSource = self
-        
-        self.presenter = PokemonListPresenter(view: self, model: model)
         
         presenter.viewDidLoad()
     }
