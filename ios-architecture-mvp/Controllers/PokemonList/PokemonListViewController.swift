@@ -13,6 +13,10 @@ class PokemonListViewController: UIViewController, AlertViewController {
     private var presenter: PokemonListPresenterInput!
     var model = PokemonListModel()
     
+    func inject(presenter: PokemonListPresenterInput) {
+        self.presenter = presenter
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
