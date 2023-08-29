@@ -11,6 +11,7 @@ class PokemonListViewController: UIViewController, AlertViewController {
     private lazy var myView = PokemonListView()
     
     private var presenter: PokemonListPresenterInput!
+    var model = PokemonListModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +19,9 @@ class PokemonListViewController: UIViewController, AlertViewController {
         myView.tableView.delegate = self
         myView.tableView.dataSource = self
         
-        self.presenter = PokemonListPresenter(view: self)
+        self.presenter = PokemonListPresenter(view: self, model: model)
+        
+        presenter.viewDidLoad()
     }
     
     override func loadView() {
@@ -28,7 +31,9 @@ class PokemonListViewController: UIViewController, AlertViewController {
 }
 
 extension PokemonListViewController: PokemonListPresenterOutput {
-    
+    func updatePokemonList() {
+        myView.tableView.reloadData()
+    }
 }
 
 extension PokemonListViewController: UITableViewDelegate {

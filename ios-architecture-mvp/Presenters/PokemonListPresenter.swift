@@ -11,24 +11,23 @@ protocol PokemonListPresenterInput {
     var numberOfTableDataList: Int { get }
     func pokemon(forRow row: Int) -> Pokemon?
     func didSelectRow(at indexPath: IndexPath)
+    func viewDidLoad()
 }
 
 protocol PokemonListPresenterOutput: AnyObject {
-    
+    func updatePokemonList()
 }
 
 final class PokemonListPresenter: PokemonListPresenterInput {
     private weak var view: PokemonListPresenterOutput!
+    private var model: PokemonListModelInput
     
-    init(view: PokemonListPresenterOutput!) {
+    init(view: PokemonListPresenterOutput, model: PokemonListModelInput) {
         self.view = view
+        self.model = model
     }
     
-    private var tableDataList: [Pokemon] = [
-        Pokemon(PokemonResult(name: "Bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/")),
-        Pokemon(PokemonResult(name: "Ivysaur", url: "https://pokeapi.co/api/v2/pokemon/2/")),
-        Pokemon(PokemonResult(name: "Venusaur", url: "https://pokeapi.co/api/v2/pokemon/3/"))
-    ]
+    private(set) var tableDataList: [Pokemon] = []
     
     var numberOfTableDataList: Int {
         return tableDataList.count
@@ -42,6 +41,20 @@ final class PokemonListPresenter: PokemonListPresenterInput {
     func didSelectRow(at indexPath: IndexPath) {
         guard let pokemon = pokemon(forRow: indexPath.row) else { return }
         print(pokemon.name)
-        print(pokemon.imageUrl)
+        print(pokemon.imageUrl!)
+    }
+    
+    func viewDidLoad() {
+        model.fetchPokemonList { [weak self] result in
+            switch result {
+            case .success(let pokemonList):
+                self?.tableDataList = pokemonList
+                DispatchQueue.main.async {
+                    self?.view.updatePokemonList()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
