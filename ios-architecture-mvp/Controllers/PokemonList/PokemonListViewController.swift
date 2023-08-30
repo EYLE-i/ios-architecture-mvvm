@@ -39,7 +39,8 @@ class PokemonListViewController: UIViewController, AlertViewController {
 }
 
 extension PokemonListViewController: PokemonListPresenterOutput {
-    func updatePokemonList() {
+    func updatePokemonListView() {
+        myView.favoriteFilterButton.isSelected = presenter.isCheckFavoriteFilter
         myView.tableView.reloadData()
     }
 }
