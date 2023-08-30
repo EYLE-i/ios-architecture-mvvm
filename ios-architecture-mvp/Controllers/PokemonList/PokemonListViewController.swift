@@ -23,12 +23,17 @@ class PokemonListViewController: UIViewController, AlertViewController {
         
         myView.tableView.delegate = self
         myView.tableView.dataSource = self
+        myView.favoriteFilterButton.addTarget(self, action: #selector(filterByFavorite(_:)), for: .touchUpInside)
         
         presenter.viewDidLoad()
     }
     
     override func loadView() {
         view = myView
+    }
+    
+    @objc private func filterByFavorite(_ sender: Any) {
+        presenter.filteredTableDataList()
     }
     
 }

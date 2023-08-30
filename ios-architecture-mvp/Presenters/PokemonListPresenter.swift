@@ -12,6 +12,7 @@ protocol PokemonListPresenterInput {
     func pokemon(forRow row: Int) -> Pokemon?
     func didSelectRow(at indexPath: IndexPath)
     func viewDidLoad()
+    func filteredTableDataList()
 }
 
 protocol PokemonListPresenterOutput: AnyObject {
@@ -28,6 +29,8 @@ final class PokemonListPresenter: PokemonListPresenterInput {
     }
     
     private(set) var tableDataList: [Pokemon] = []
+    private(set) var pokemonList: [Pokemon] = []
+    var isCheckFavoriteFilter = false
     
     var numberOfTableDataList: Int {
         return tableDataList.count
@@ -49,6 +52,7 @@ final class PokemonListPresenter: PokemonListPresenterInput {
             switch result {
             case .success(let pokemonList):
                 self?.tableDataList = pokemonList
+                self?.pokemonList = pokemonList
                 DispatchQueue.main.async {
                     self?.view.updatePokemonList()
                 }
@@ -57,4 +61,11 @@ final class PokemonListPresenter: PokemonListPresenterInput {
             }
         }
     }
+    
+    func filteredTableDataList() {
+        isCheckFavoriteFilter.toggle()
+        tableDataList = model.pokemonFiltered(isFilterFavorite: isCheckFavoriteFilter, favoriteNumbers: [1, 2, 3], pokemonList: pokemonList)
+        self.view.updatePokemonList()
+    }
+    
 }

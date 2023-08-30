@@ -25,7 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let pokemonListViewController = UIStoryboard(name: "PokemonList", bundle: nil).instantiateInitialViewController() as! PokemonListViewController
         let navigationController = UINavigationController(rootViewController: pokemonListViewController)
 
-        let model = PokemonListModel()
+        let dataStore = FavoritePokemonDataStoreImpl()
+        let apiClient = DefaultAPIClient.shared
+        let model = PokemonListModel(dataStore: dataStore, apiClient: apiClient)
         let presenter = PokemonListPresenter(view: pokemonListViewController, model: model)
         pokemonListViewController.inject(presenter: presenter)
 
