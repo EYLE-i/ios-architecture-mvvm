@@ -14,6 +14,8 @@ protocol PokemonListPresenterInput {
     func didSelectRow(at indexPath: IndexPath)
     func viewDidLoad()
     func filteredTableDataList()
+    func didTapFavoriteButton(at indexPath: IndexPath)
+    func checkFavorite(forRow row: Int) -> Bool
 }
 
 protocol PokemonListPresenterOutput: AnyObject {
@@ -70,4 +72,12 @@ final class PokemonListPresenter: PokemonListPresenterInput {
         self.view.updatePokemonListView()
     }
     
+    func didTapFavoriteButton(at indexPath: IndexPath) {
+        model.updateFavoriteIds(number: indexPath.row)
+        self.view.updatePokemonListView()
+    }
+    
+    func checkFavorite(forRow row: Int) -> Bool {
+        return model.favoriteIds.contains(row)
+    }
 }

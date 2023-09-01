@@ -10,15 +10,19 @@ import Foundation
 protocol PokemonListModelInput {
     func fetchPokemonList(_ completion: @escaping (Result<[Pokemon], APIError>) -> Void)
     func pokemonFiltered(isFilterFavorite: Bool, favoriteNumbers: [Int], pokemonList: [Pokemon]) -> [Pokemon]
+    func updateFavoriteIds(number: Int)
+    var favoriteIds: [Int] { get }
 }
 
 final class PokemonListModel: PokemonListModelInput {
     private let pokemonListAPI: PokemonListAPI
     let dataStore: FavoritePokemonDataStore
+    var favoriteIds: [Int]
     
     init(dataStore: FavoritePokemonDataStore, apiClient: APIClient) {
         self.dataStore = dataStore
         self.pokemonListAPI = .init(apiClient: apiClient)
+        self.favoriteIds = dataStore.fetchAll()
     }
     
     func fetchPokemonList(_ completion: @escaping (Result<[Pokemon], APIError>) -> Void) {
@@ -42,5 +46,14 @@ final class PokemonListModel: PokemonListModelInput {
                 return true
             }
         }
+    }
+    
+    func updateFavoriteIds(number: Int) {
+        if favoriteIds.contains(number) {
+            _ = dataStore.remove([number])
+        } else {
+            _ = dataStore.add([number])
+        }
+        favoriteIds = dataStore.fetchAll()
     }
 }
