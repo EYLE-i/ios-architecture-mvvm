@@ -63,7 +63,7 @@ extension PokemonListViewController: UITableViewDataSource {
         if let pokemon = presenter.pokemon(forRow: indexPath.row) {
             cell.nameLabel.text = pokemon.name
             cell.setImage(pokemon.imageUrl)
-            cell.favoriteButton.isSelected = presenter.checkFavorite(forRow: indexPath.row)
+            cell.favoriteButton.isSelected = presenter.checkFavorite(forRow: pokemon.number)
         }
         return cell
     }
@@ -71,9 +71,10 @@ extension PokemonListViewController: UITableViewDataSource {
 
 extension PokemonListViewController: PokemonListTableViewCellDelegate {
     func pokemonListTableViewCell(_ cell: PokemonListTableViewCell, didChangeFavorite sender: Any) {
-        guard let indexPath = myView.tableView.indexPath(for: cell) else {
+        guard let indexPath = myView.tableView.indexPath(for: cell),
+              let pokemon = presenter.pokemon(forRow: indexPath.row) else {
             return
         }
-        presenter.didTapFavoriteButton(at: indexPath)
+        presenter.didTapFavoriteButton(at: pokemon.number)
     }
 }

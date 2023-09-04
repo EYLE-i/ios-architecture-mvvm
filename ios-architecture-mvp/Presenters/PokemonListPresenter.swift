@@ -14,7 +14,7 @@ protocol PokemonListPresenterInput {
     func didSelectRow(at indexPath: IndexPath)
     func viewDidLoad()
     func filteredTableDataList()
-    func didTapFavoriteButton(at indexPath: IndexPath)
+    func didTapFavoriteButton(at number: Int)
     func checkFavorite(forRow row: Int) -> Bool
 }
 
@@ -68,12 +68,12 @@ final class PokemonListPresenter: PokemonListPresenterInput {
     
     func filteredTableDataList() {
         isCheckFavoriteFilter.toggle()
-        tableDataList = model.pokemonFiltered(isFilterFavorite: isCheckFavoriteFilter, favoriteNumbers: [1, 2, 3], pokemonList: pokemonList)
+        tableDataList = model.pokemonFiltered(isFilterFavorite: isCheckFavoriteFilter, favoriteNumbers: model.favoriteIds, pokemonList: pokemonList)
         self.view.updatePokemonListView()
     }
     
-    func didTapFavoriteButton(at indexPath: IndexPath) {
-        model.updateFavoriteIds(number: indexPath.row)
+    func didTapFavoriteButton(at number: Int) {
+        model.updateFavoriteIds(number: number)
         self.view.updatePokemonListView()
     }
     
