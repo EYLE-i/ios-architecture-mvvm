@@ -47,8 +47,6 @@ final class PokemonListPresenter: PokemonListPresenterInput {
     
     func didSelectRow(at indexPath: IndexPath) {
         guard let pokemon = pokemon(forRow: indexPath.row) else { return }
-        print(pokemon.name)
-        print(pokemon.imageUrl!)
     }
     
     func viewDidLoad() {
