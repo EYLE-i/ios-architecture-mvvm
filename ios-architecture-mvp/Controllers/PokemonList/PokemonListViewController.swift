@@ -78,9 +78,12 @@ extension PokemonListViewController: PokemonListTableViewCellDelegate {
         presenter.didTapFavoriteButton(at: pokemon.number)
     }
     
-    func pushPokemonDetailVC() {
+    func pushPokemonDetailVC(pokemon: Pokemon) {
         let storyBoard = UIStoryboard(name: "PokemonDetail", bundle: nil)
         let viewController = storyBoard.instantiateViewController(withIdentifier: "PokemonDetail") as! PokemonDetailViewController
+        let model = PokemonDetailModel()
+        let presenter = PokemonDetailPresenter(view: viewController, model: model)
+        viewController.inject(presenter: presenter)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

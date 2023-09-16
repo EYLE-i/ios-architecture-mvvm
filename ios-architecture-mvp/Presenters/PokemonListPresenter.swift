@@ -20,7 +20,7 @@ protocol PokemonListPresenterInput {
 
 protocol PokemonListPresenterOutput: AnyObject {
     func updatePokemonListView()
-    func pushPokemonDetailVC()
+    func pushPokemonDetailVC(pokemon: Pokemon)
 }
 
 final class PokemonListPresenter: PokemonListPresenterInput {
@@ -48,7 +48,7 @@ final class PokemonListPresenter: PokemonListPresenterInput {
     
     func didSelectRow(at indexPath: IndexPath) {
         guard let pokemon = pokemon(forRow: indexPath.row) else { return }
-        self.view.pushPokemonDetailVC()
+        self.view.pushPokemonDetailVC(pokemon: pokemon)
     }
     
     func viewDidLoad() {

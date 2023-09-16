@@ -35,6 +35,7 @@
 		45B78B0B2A5A55A4002F1FD0 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B78B0A2A5A55A4002F1FD0 /* APIError.swift */; };
 		45B78B0D2A5A5841002F1FD0 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B78B0C2A5A5841002F1FD0 /* APIRequest.swift */; };
 		45CBF3702A1B7B6700F5DB24 /* PokemonDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CBF36F2A1B7B6700F5DB24 /* PokemonDetailModel.swift */; };
+		45F960082AA8CFE4003FFA75 /* PokemonDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F960072AA8CFE4003FFA75 /* PokemonDetailPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		45B78B0A2A5A55A4002F1FD0 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		45B78B0C2A5A5841002F1FD0 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		45CBF36F2A1B7B6700F5DB24 /* PokemonDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailModel.swift; sourceTree = "<group>"; };
+		45F960072AA8CFE4003FFA75 /* PokemonDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				4597EC122A9CB1C5002B9F82 /* PokemonListPresenter.swift */,
+				45F960072AA8CFE4003FFA75 /* PokemonDetailPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				451594CD29F04F810044B5B7 /* APIClient.swift in Sources */,
 				4599A22729F938A600668A44 /* Pokemon.swift in Sources */,
 				4599A22329F7EF8400668A44 /* PokemonListViewController.swift in Sources */,
+				45F960082AA8CFE4003FFA75 /* PokemonDetailPresenter.swift in Sources */,
 				458B4CD929D96B69003AB41B /* AppDelegate.swift in Sources */,
 				45778EAA2A09491C00A2D1B4 /* PokemonDetailViewController.swift in Sources */,
 				4599A22929F95B8800668A44 /* FavoritePokemonDataStore.swift in Sources */,
