@@ -8,7 +8,7 @@
 import Foundation
 
 protocol PokemonDetailModelInput {
-    func fetchPokemonDetail(_ completion: @escaping (Result<PokemonDetail, APIError>) -> Void)
+    func fetchPokemonDetail(_ completion: @escaping (_ result: Result<PokemonDetail, APIError>) -> Void)
 }
 
 final class PokemonDetailModel: PokemonDetailModelInput {
